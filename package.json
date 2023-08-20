@@ -6,7 +6,9 @@
   "type": "module",
   "scripts": {
     "start": "node server.js",
-    "server": "nodemon server.js"
+    "server": "nodemon server.js",
+    "react": "react-scripts start/client",
+    "both": "concurrently \"nodemon server.js\" \"npm run react\""
   },
   "keywords": [],
   "author": "Maung",
