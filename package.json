@@ -7,8 +7,8 @@
   "scripts": {
     "start": "node server.js",
     "server": "nodemon server.js",
-    "react": "react-scripts start/client",
-    "both": "concurrently \"nodemon server.js\" \"npm run react\""
+    "react": "npm start --prefix ./client",
+    "dev": "concurrently \"nodemon run server\" \"npm run react\""
   },
   "keywords": [],
   "author": "Maung",
@@ -16,6 +16,8 @@
   "dependencies": {
     "bcrypt": "^5.1.1",
     "colors": "^1.4.0",
+    "concurrently": "^8.2.0",
+    "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.1",
