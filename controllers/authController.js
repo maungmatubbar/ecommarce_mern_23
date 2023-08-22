@@ -20,7 +20,7 @@ export const userRegister = async (req, res) => {
       return res.send({ error: "Address is required" });
     }
     if (!answer) {
-      return res.send({ error: "Address is required" });
+      return res.send({ error: "Answer is required" });
     }
     //check user
     const existingUser = await userModel.findOne({ email: email });
@@ -93,6 +93,7 @@ export const userLogin = async (req, res) => {
         email: user.email,
         phone: user.phone,
         address: user.address,
+        role: user.role,
       },
       token,
     });
