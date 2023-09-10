@@ -73,10 +73,14 @@ export const updateCategory = async (req, res) => {
 //get all categories 
 export const getCategories = async (req, res) => {
     try {
-        const categories = await categoryModel.find({});
+        const PAZE_SIZE = 3;
+        const page = parseInt(req.query.page - 1 || "0");
+        const total = await categoryModel.countDocuments({});
+        const categories = await categoryModel.find({}).limit(PAZE_SIZE).skip(PAZE_SIZE * page);
         res.status(200).send({
             success: true,
             message: 'Categories list',
+            total: total,
             categories
         })
     } catch (error) {
