@@ -96,7 +96,7 @@ export const getCategories = async (req, res) => {
 //Get Single Category
 export const getSingleCategory = async (req, res) => {
     try {
-        const category = await categoryModel.find({ slug: req.params.slug })
+        const category = await categoryModel.findOne({ slug: req.params.slug })
         res.status(200).send({
             success: true,
             message: 'Show single category',
