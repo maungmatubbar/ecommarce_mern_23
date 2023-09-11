@@ -69,7 +69,10 @@ export const create = async (req, res) => {
 
 export const getProducts = async (req, res) => {
     try {
-        const products = await productModel.find({}).select('-photo').populate('category').limit(10).sort('createdAt');
+        const PAZE_SIZE = 3;
+        const page = parseInt(req.query.page - 1 || "0");
+        const products = await productModel.find({}).select('-photo')
+            .populate('category').limit(PAZE_SIZE).skip(PAZE_SIZE * page).sort('createdAt');
         res.status(200).send({
             'success': true,
             "countTotal": products.length,
